@@ -11,6 +11,8 @@ metadata:
 
 # Figma Asset Download
 
+Codex에서는 각 명령의 `${CLAUDE_SKILL_DIR}`를 이 `SKILL.md`가 설치된 디렉터리의 절대 경로로 바꿔 실행한다.
+
 Figma **REST API**를 사용해 지정한 프레임 내 이미지·벡터 노드를 로컬에 SVG 또는 PNG로 다운로드하는 **범용** 스킬입니다.
 Figma MCP와 무관하며, `output_dir` 인자만 바꾸면 어떤 플랫폼에서도 사용할 수 있습니다.
 

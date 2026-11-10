@@ -1,6 +1,27 @@
 # Design-To-UI
 
-Figma 디자인을 네이티브 UI(Android Compose/XML, iOS SwiftUI/UIKit)로 변환하는 Claude Code 플러그인입니다.
+Figma 디자인을 네이티브 UI(Android Compose/XML, iOS SwiftUI/UIKit)로 변환하는 Claude Code 및 Codex 플러그인입니다.
+
+## Codex에서 사용하기
+
+터미널에서 이 저장소의 마켓플레이스를 등록하고 플러그인을 설치합니다.
+
+```bash
+codex plugin marketplace add naver/design-to-ui
+codex plugin add design-to-ui@design-to-ui-marketplace
+```
+
+로컬 체크아웃을 검증할 때는 첫 명령의 `naver/design-to-ui` 자리에 저장소 절대 경로를 넣습니다. 대상 앱 폴더에서 새 Codex 세션을 열고 `$` 스킬 목록에서 선택하거나 다음처럼 요청하세요.
+
+```text
+$design-to-ui:generate-project-design-system 이 앱의 디자인 시스템 초안을 만들어줘.
+$design-to-ui:design-to-ui <Figma 프레임 URL>을 기존 상품 화면의 Compose UI로 구현해줘.
+$design-to-ui:design-qa <Figma 프레임 URL>과 빌드한 화면을 비교하고 차이만 알려줘.
+```
+
+디자이너 검수는 `$design-to-ui:figma-start <개발 PR URL>`, `$design-to-ui:figma-apply <Figma URL>`, `$design-to-ui:handoff` 순서로 호출합니다. 각 스킬은 아래 커맨드 표와 동일한 절차를 사용합니다.
+
+Figma Desktop에서 로컬 MCP 서버를 활성화한 뒤 디자인 파일을 엽니다. 에셋 다운로드에는 `FIGMA_ACCESS_TOKEN`이 필요합니다([설치](#설치) 1~3단계). Codex의 프로젝트 디자인 시스템 기본 경로는 `.agents/skills/project-design-system/SKILL.md`입니다. 기존 Claude Code 프로젝트의 규칙도 재사용할 수 있습니다.
 
 ## 빠른 설치 (복붙)
 (개발용)

@@ -1,0 +1,14 @@
+{
+  "name": "design-to-ui",
+  "description": "Figma 디자인을 네이티브 UI(Android Compose/XML, iOS SwiftUI/UIKit)로 변환하는 스킬 모음. 에셋 다운로드, 디자인 시스템 토큰 매핑, 코드 변환까지 자동화합니다.",
+  "version": "1.5.3",
+  "author": {
+    "name": "NAVER",
+    "url": "https://github.com/naver/design-to-ui"
+  },
+  "skills": [
+    "./skills/",
+    "./codex-skills/"
+  ],
+  "mcpServers": "./.mcp.json"
+}

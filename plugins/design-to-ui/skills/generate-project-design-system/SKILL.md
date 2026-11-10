@@ -71,7 +71,7 @@ design-to-ui Step 4·5는 에셋 최종 형식을 PDS에 위임한다(없으면 
 
 ### Step 4: 초안 SKILL.md 생성
 
-Step 1~3 결과를 종합하여 `.claude/skills/project-design-system/SKILL.md` 초안을 생성합니다.
+Step 1~3 결과로 프로젝트의 `project-design-system/SKILL.md` 초안을 생성합니다. Claude Code의 기본 위치는 `.claude/skills/`, Codex는 `.agents/skills/`입니다. Codex에서 기존 `.claude/skills/` 규칙만 발견하면 그 파일을 재사용합니다.
 
 **필수 섹션:**
 

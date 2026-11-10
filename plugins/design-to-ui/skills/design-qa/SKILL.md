@@ -1,6 +1,7 @@
 ---
 name: design-qa
-description: 빌드된 앱 화면을 실기기/시뮬레이터에서 캡처해 Figma 원본과 오버레이(50% 블렌드 + diff 히트맵 + figma|real 나란히 크롭 + 픽셀색 비교)로 대조하고, 코드 오차로 확정된 항목을 Figma 선언값으로 되짚어 스스로 보정하는 검증 루프. 비교·측정 엔진은 플랫폼 중립이고 캡처 계층만 플랫폼별이다(Android·iOS·Web 지원). 두 진입: ① codegen Step 7c 위임 호출, ② 직접 호출(/design-qa) — 프롬프트로 검증/보정 모드를 판별하고 Figma 링크 해소·현재 브랜치 빌드·캡처까지 스스로 오케스트레이션. "오버레이 검증", "실기기 대조", "figma랑 겹쳐봐", "design-qa", "어디가 틀렸는지 보정", "Step 7c" 같은 요청에 사용.
+description: >-
+  빌드된 앱 화면을 실기기/시뮬레이터에서 캡처해 Figma 원본과 오버레이(50% 블렌드 + diff 히트맵 + figma|real 나란히 크롭 + 픽셀색 비교)로 대조하고, 코드 오차로 확정된 항목을 Figma 선언값으로 되짚어 스스로 보정하는 검증 루프. 비교·측정 엔진은 플랫폼 중립이고 캡처 계층만 플랫폼별이다(Android·iOS·Web 지원). 두 진입: ① codegen Step 7c 위임 호출, ② 직접 호출(/design-qa) — 프롬프트로 검증/보정 모드를 판별하고 Figma 링크 해소·현재 브랜치 빌드·캡처까지 스스로 오케스트레이션. "오버레이 검증", "실기기 대조", "figma랑 겹쳐봐", "design-qa", "어디가 틀렸는지 보정", "Step 7c" 같은 요청에 사용.
 license: Apache-2.0
 metadata:
   author: NAVER
@@ -9,6 +10,8 @@ metadata:
 ---
 
 # design-qa — 오버레이 검증 루프
+
+Codex에서는 본문과 플랫폼 문서의 `scripts/`를 이 `SKILL.md`가 있는 디렉터리 기준으로 해석한다. 명령의 `${CLAUDE_SKILL_DIR}`에는 그 절대 경로를 사용한다.
 
 codegen의 "LLM 눈대중 대조"를 **실기기/시뮬레이터 런타임에서 수치로** 수행하는 보완 트랙이다. JVM
 (layoutlib) 정량 트랙과 달리 **실 렌더엔진·다크모드·디바이스 density**가 그대로 반영된다 — 둘은 경쟁이

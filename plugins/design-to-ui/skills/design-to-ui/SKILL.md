@@ -11,6 +11,8 @@ metadata:
 
 # Design to UI
 
+Codex에서 아래 명령과 참조의 `${CLAUDE_SKILL_DIR}`는 현재 읽은 이 `SKILL.md`의 상위 디렉터리 절대 경로로 치환한다. 앱 프로젝트를 작업 디렉터리로 유지한다.
+
 Figma 디자인을 네이티브 UI로 1:1 시각 충실도로 변환하는 워크플로우입니다.
 Figma MCP 서버와 연동하여 디자인 토큰을 올바르게 사용하고, 에셋을 분류·변환하며, 프로젝트 디자인 시스템을 적용합니다.
 
@@ -184,7 +186,7 @@ design_context의 모든 시각 요소를 확인하여 세 유형으로 분류�
 
 **플랫폼 에셋 사양 (Step 4·5 공용):**
 
-> **에셋 최종 형식은 `project-design-system`을 우선 따른다 (Android·iOS 공통).** PDS(`.claude/skills/project-design-system`)에 에셋 형식 규칙(예: iOS `PNG @1x/2x/3x`)이 명시돼 있으면 그대로 따르고, 없으면 아래 표의 기본 변환 스크립트를 쓴다. 기본과 다른 배율·형식이 필요하면 로컬 업스케일 대신 Figma에서 해당 배율로 재추출한다(REST `format=png&scale=1|2|3`).
+> **에셋 최종 형식은 `project-design-system`을 우선 따른다 (Android·iOS 공통).** 프로젝트의 PDS(Step 6)에 에셋 형식 규칙(예: iOS `PNG @1x/2x/3x`)이 명시돼 있으면 그대로 따르고, 없으면 아래 표의 기본 변환 스크립트를 쓴다. 기본과 다른 배율·형식이 필요하면 로컬 업스케일 대신 Figma에서 해당 배율로 재추출한다(REST `format=png&scale=1|2|3`).
 
 | 항목 | Android | iOS |
 |------|---------|-----|
@@ -237,7 +239,7 @@ bash "${CLAUDE_SKILL_DIR}/scripts/ios/convert_assets.sh" /tmp/figma_type_a <App>
 
 ### Step 6: 플랫폼별 코드 변환 ★ (플랫폼 분기)
 
-프로젝트에 `.claude/skills/project-design-system/SKILL.md`가 있으면 읽고 적용한다.
+프로젝트의 `project-design-system/SKILL.md`를 읽고 적용한다. Claude Code는 `.claude/skills/`에서 찾고, Codex는 `.agents/skills/`에서 먼저 찾은 뒤 없으면 기존 `.claude/skills/` 규칙을 재사용한다.
 
 Step 0에서 판별한 플랫폼·프레임워크의 reference를 `Read`로 읽고 따른다:
 
